@@ -1,0 +1,119 @@
+<html>
+
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8" />
+  {% load staticfiles %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+    type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style type="text/css">
+    html,
+    body {
+      height: 100%
+    }
+
+    .feed-section {
+      margin-top: 0%;
+      padding: 2%;
+    }
+
+    .read-more {
+      color: #5ad67d;
+      display: inline-block;
+      position: relative;
+    }
+
+    .feed-section h4 {
+      color: #ffa500;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .feed-section .subheading {
+      color: #3931af;
+      font-size: 20px;
+    }
+
+    .feed-section .row {
+      margin-top: 10%;
+    }
+
+    .feed-img {
+      text-align: center;
+    }
+
+    .feed-img img {
+      width: 50%;
+      height: 20%;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <br />
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <form class="card card-sm">
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-search h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+              <input class="form-control form-control-lg form-control-borderless" type="text" name="search"
+                placeholder="Enter the RSS Feed URL to be read" value={{search}}>
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+              <button class="btn btn-lg btn-success" type="submit">Search</button>
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+      <!--end of col-->
+    </div>
+  </div>
+
+  <h1 class="text-center">{{feed_title}}</h1>
+  <div class="">
+    <img src={{feed_image}} class="img-fluid" alt="" />
+  </div>
+  {% for entry in entries %}
+  <div class="row feed-section">
+    {% if entry.media_thumbnail %}
+    <div class="col-md-3 feed-img">
+      <img src={{entry.media_thumbnail.0.url}} class="rounded-circle img-fluid" alt="" />
+    </div>
+    {% endif %}
+    <div class="col-md-9">
+      <h4>{{entry.title}}</h4>
+      <h4 class="subheading"> Published at {{entry.published}}</h4>
+      <p class="text-muted content" maxlength="20">{{entry.summary | safe}}</p>
+      <a class="read-more" href={{entry.link}}> Source link...</a>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</body>
+
+</html>
+<script type="text/javascript">
+  $(document).ready(function () {
+    // $(".content").each(function (i) {
+    //   len = $(this).text().length;
+    //   if (len > 100) {
+    //     $(this).text($(this).text().substr(0, 50) + 'Read more…');
+    //   }
+    // });
+
+  });
+</script>

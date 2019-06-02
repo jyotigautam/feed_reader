@@ -1,0 +1,2 @@
+django==1.11.20
+feedparser==5.2.1
