@@ -13,7 +13,7 @@ class HomeView(View):
         search = ""
         context = {}
         if request.GET.get('search'):
-            search = request.GET.get('search')
+            search = request.GET.get('search').strip()
             feed = feedparser.parse(search)
 
             if hasattr(feed['feed'], 'title'):
