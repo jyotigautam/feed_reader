@@ -25,7 +25,7 @@ SECRET_KEY = '@5#_(op(&$5t2y(791+4g*&6y08-jm&x^h-%v6u1(c0acv3d8%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['obscure-scrubland-55141.herokuapp.com']
+ALLOWED_HOSTS = ['obscure-scrubland-55141.herokuapp.com', 'localhost']
 
 
 # Application definition
