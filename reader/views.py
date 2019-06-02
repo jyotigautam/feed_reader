@@ -15,7 +15,12 @@ class HomeView(View):
         if request.GET.get('search'):
             search = request.GET.get('search')
             feed = feedparser.parse(search)
-            # pdb.set_trace()
+
+            if hasattr(feed['feed'], 'title'):
+                feed_title = feed['feed']['title']
+            else:
+                feed_title = "No feeds to show"
+
             if hasattr(feed['feed'], 'image'):
                 feed_image = feed['feed']['image']['href']
             elif hasattr(feed['feed'], 'gd_image'):
@@ -25,7 +30,7 @@ class HomeView(View):
 
             context = {
                 'entries': feed.entries,
-                'feed_title': feed['feed']['title'],
+                'feed_title': feed_title,
                 'feed_image': feed_image,
                 'search': search
             }

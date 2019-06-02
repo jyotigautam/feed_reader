@@ -97,6 +97,7 @@
     </br>
     {% for entry in entries %}
     <div class="row feed-section">
+      {% if feed_image %}
       <div class="col-md-3 feed-img">
         {% if entry.media_thumbnail %}
         <img src={{entry.media_thumbnail.0.url}} class="rounded-circle img-fluid" alt="" />
@@ -104,6 +105,7 @@
         <img src={{entry.thumbnail}} class="rounded-circle img-fluid" />
         {% endif %}
       </div>
+      {% endif %}
       <div class="col-md-9 text-center">
         <h4>{{entry.title}}</h4>
         <h4 class="subheading"> Published at {{entry.published}}</h4>
@@ -116,14 +118,3 @@
 </body>
 
 </html>
-<script type="text/javascript">
-  $(document).ready(function () {
-    // $(".content").each(function (i) {
-    //   len = $(this).text().length;
-    //   if (len > 100) {
-    //     $(this).text($(this).text().substr(0, 50) + 'Read more…');
-    //   }
-    // });
-
-  });
-</script>
