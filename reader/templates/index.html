@@ -58,6 +58,13 @@
 <body>
 
   <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">RSS Feed Reader</a>
+      </div>
+    </nav>
+    <br />
+    <br />
     <br />
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8">
@@ -81,27 +88,30 @@
       </div>
       <!--end of col-->
     </div>
-  </div>
-
-  <h1 class="text-center">{{feed_title}}</h1>
-  <div class="">
-    <img src={{feed_image}} class="img-fluid" alt="" />
-  </div>
-  {% for entry in entries %}
-  <div class="row feed-section">
-    {% if entry.media_thumbnail %}
-    <div class="col-md-3 feed-img">
-      <img src={{entry.media_thumbnail.0.url}} class="rounded-circle img-fluid" alt="" />
+    <div class="row">
+      {% if feed_image %}
+      <img src={{feed_image}} class="img-fluid col-3" alt="" />
+      {% endif %}
+      <h1 class="text-center col-6 my-auto">{{feed_title}}</h1>
     </div>
-    {% endif %}
-    <div class="col-md-9">
-      <h4>{{entry.title}}</h4>
-      <h4 class="subheading"> Published at {{entry.published}}</h4>
-      <p class="text-muted content" maxlength="20">{{entry.summary | safe}}</p>
-      <a class="read-more" href={{entry.link}}> Source link...</a>
+    </br>
+    {% for entry in entries %}
+    <div class="row feed-section">
+      <div class="col-md-3 feed-img">
+        {% if entry.media_thumbnail %}
+        <img src={{entry.media_thumbnail.0.url}} class="rounded-circle img-fluid" alt="" />
+        {% elif entry.thumbnail %}
+        <img src={{entry.thumbnail}} class="rounded-circle img-fluid" />
+        {% endif %}
+      </div>
+      <div class="col-md-9 text-center">
+        <h4>{{entry.title}}</h4>
+        <h4 class="subheading"> Published at {{entry.published}}</h4>
+        <p class="text-muted content" maxlength="20">{{entry.summary | safe}}</p>
+        <a class="read-more" href={{entry.link}}> Source link...</a>
+      </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
   </div>
 </body>
 
