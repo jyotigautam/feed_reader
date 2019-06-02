@@ -3,9 +3,11 @@ A simple django app to read RSS feeds
 
 - Clone This Project (Make Sure You Have Git Installed):
 
-    git clone git@github.com:jyotigautam/feed_reader.git
+- Install pip and virtualenv
 
-- Install Dependencies: 
+- cd into project and activate virtualenv
+
+- Install Dependencies : 
 
     pip install -r requirements.txt
 
