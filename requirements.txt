@@ -1,2 +1,4 @@
-django==1.11.20
+Django==1.11.20
 feedparser==5.2.1
+pytz==2019.1
+whitenoise==3.3.1
