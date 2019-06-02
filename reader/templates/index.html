@@ -6,6 +6,7 @@
   {% load staticfiles %}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
     type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.1/animate.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style type="text/css">
@@ -96,7 +97,7 @@
     </div>
     </br>
     {% for entry in entries %}
-    <div class="row feed-section">
+    <div class="row feed-section animated bounceInUp">
       {% if feed_image %}
       <div class="col-md-3 feed-img">
         {% if entry.media_thumbnail %}
